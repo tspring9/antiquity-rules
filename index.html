@@ -1,0 +1,1112 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Antiquity Rules of Play</title>
+<meta name="description" content="Playtest rulebook for Antiquity, a strategy board game of empire in the ancient Mediterranean.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #f1f3f0;
+  --surface: #fbfcfa;
+  --ink: #1b2226;
+  --muted: #56625f;
+  --rule: #cfd6d2;
+  --accent: #1f6b62;
+  --accent-soft: #dfece8;
+  --red: #a8322d;
+  --red-soft: #f5e3e1;
+  --gold: #8a6614;
+  --slot: #ffffff;
+  --display: "Marcellus SC", "Trajan Pro", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #111618;
+    --surface: #182023;
+    --ink: #e4ebe8;
+    --muted: #98a7a3;
+    --rule: #2c3739;
+    --accent: #62b8aa;
+    --accent-soft: #1b3330;
+    --red: #e27a72;
+    --red-soft: #3a2220;
+    --gold: #d9b45c;
+    --slot: #1f292c;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #111618;
+  --surface: #182023;
+  --ink: #e4ebe8;
+  --muted: #98a7a3;
+  --rule: #2c3739;
+  --accent: #62b8aa;
+  --accent-soft: #1b3330;
+  --red: #e27a72;
+  --red-soft: #3a2220;
+  --gold: #d9b45c;
+  --slot: #1f292c;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+}
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.page {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 56px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 32px 96px;
+}
+
+/* ---------- contents ---------- */
+nav.toc {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  font-size: 15px;
+}
+.toc h2 {
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc a {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc a:hover { background: var(--accent-soft); }
+.toc a span { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
+
+/* ---------- header ---------- */
+header.cover { padding-bottom: 32px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; }
+.cover .eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.cover h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 76px);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.cover .sub {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin: 10px 0 24px;
+}
+.cover p.lede { font-size: 19px; max-width: 62ch; margin: 0; }
+
+/* ---------- sections ---------- */
+main { min-width: 0; }
+section { padding-top: 40px; }
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  text-wrap: balance;
+}
+h2 .num {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0;
+  min-width: 2ch;
+}
+h3 {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 18px;
+  margin: 28px 0 8px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  text-wrap: balance;
+}
+h3 .num { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--muted); }
+p, ul, ol.steps { max-width: 68ch; }
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 22px; }
+li { margin-bottom: 5px; }
+li::marker { color: var(--accent); }
+strong { font-weight: 700; }
+.term { font-weight: 700; }
+.ref { font-family: var(--mono); font-size: 0.82em; white-space: nowrap; }
+.plus { color: var(--accent); font-family: var(--mono); font-weight: 500; }
+.minus { color: var(--red); font-family: var(--mono); font-weight: 500; }
+
+ol.steps { counter-reset: step; list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 10px; }
+ol.steps > li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  margin: 0;
+}
+ol.steps > li::before {
+  content: counter(step);
+  font-family: var(--mono);
+  font-size: 13px;
+  width: 26px; height: 26px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin-top: 1px;
+}
+
+/* ---------- boxes ---------- */
+.box {
+  max-width: 68ch;
+  margin: 18px 0;
+  padding: 16px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  break-inside: avoid;
+}
+.box > :last-child { margin-bottom: 0; }
+.box .label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+.box.golden { border-color: var(--accent); background: var(--accent-soft); }
+.box.golden .label { color: var(--accent); }
+.box.playtest { border: 1px dashed var(--red); }
+.box.playtest .label { color: var(--red); }
+.box.example .label { color: var(--gold); }
+
+/* ---------- tables ---------- */
+.table-wrap { overflow-x: auto; margin: 14px 0 18px; break-inside: avoid; }
+table { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+th, td { text-align: left; padding: 7px 12px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--ink);
+}
+td.n, th.n { text-align: center; padding-right: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; width: 64px; }
+td.gold { color: var(--gold); }
+tr.playtest td { color: var(--muted); }
+tr.group td { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding-top: 14px; }
+
+/* ---------- unit entries ---------- */
+.units { display: grid; gap: 0; margin: 12px 0; max-width: 68ch; }
+.unit {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  break-inside: avoid;
+}
+.unit h4 { font-family: var(--display); font-weight: 400; font-size: 19px; margin: 0 0 4px; letter-spacing: 0.03em; }
+.unit .stats { font-family: var(--mono); font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.unit .stats b { color: var(--ink); font-weight: 500; }
+.unit p { margin: 0 0 6px; }
+.unit .rule-name { font-weight: 700; color: var(--accent); }
+
+/* ---------- battle mat ---------- */
+.mat { margin: 18px 0 8px; overflow-x: auto; }
+.mat-grid {
+  display: grid;
+  grid-template-columns: 118px repeat(5, 54px);
+  gap: 6px;
+  align-items: center;
+  min-width: 420px;
+}
+.mat-lane {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.25;
+}
+.mat-lane b { display: block; color: var(--ink); font-weight: 500; }
+.slot {
+  height: 40px;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: var(--slot);
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.slot.def { border-color: var(--red); }
+.slot.flank { border-style: dashed; }
+.slot.none { border: 1px dotted var(--rule); background: transparent; color: var(--muted); font-size: 10px; }
+.mat-sep { grid-column: 1 / -1; height: 1px; background: var(--rule); margin: 6px 0; }
+.mat-key { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); margin-top: 12px; }
+.mat-key span { display: inline-flex; align-items: center; gap: 8px; }
+.mat-key i { display: inline-block; width: 22px; height: 14px; border: 1.5px solid var(--ink); border-radius: 3px; }
+.mat-key i.def { border-color: var(--red); }
+.mat-key i.flank { border-style: dashed; }
+
+/* ---------- hit chance ---------- */
+.dice { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; max-width: 560px; margin: 14px 0 18px; }
+.die { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); padding: 8px 4px; text-align: center; }
+.die .t { font-family: var(--mono); font-size: 20px; font-weight: 500; }
+.die .p { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.die .bar { height: 4px; background: var(--rule); border-radius: 2px; margin: 6px 6px 0; overflow: hidden; }
+.die .bar i { display: block; height: 100%; background: var(--accent); }
+.dice-cap { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- quick reference ---------- */
+.qr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.qr .box { margin: 0; max-width: none; }
+.qr .box.wide { grid-column: 1 / -1; }
+.qr h4 { font-family: var(--display); font-weight: 400; font-size: 18px; margin: 0 0 8px; }
+.qr ul { padding-left: 18px; font-size: 15px; }
+.qr table { font-size: 14.5px; }
+
+footer { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .page { grid-template-columns: 1fr; gap: 24px; padding: 28px 18px 64px; }
+  nav.toc { position: static; max-height: none; }
+  .toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .unit { grid-template-columns: 1fr; gap: 6px; }
+  .qr { grid-template-columns: 1fr; }
+  .dice { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media print {
+  :root {
+    --ground: #fff; --surface: #fff; --ink: #000; --muted: #444; --rule: #bbb;
+    --accent: #1f6b62; --accent-soft: #eef4f2; --red: #a8322d; --red-soft: #fff; --gold: #6d500f; --slot: #fff;
+  }
+  body { font-size: 11pt; }
+  .page { display: block; padding: 0; max-width: none; }
+  nav.toc { display: none; }
+  section { padding-top: 18px; }
+  section.major { break-before: page; }
+  h2, h3 { break-after: avoid; }
+  .qr { grid-template-columns: 1fr 1fr; }
+  a { color: inherit; text-decoration: none; }
+}
+@page { margin: 16mm 16mm 18mm; }
+</style>
+<style>
+:root{--rome:#9e2a2b;--rome-s:#f6e4e2;--carthage:#6b2d6e;--carthage-s:#f1e4f1;--ptolemaic:#8a6614;--ptolemaic-s:#f6eed8;--seleucid:#22508f;--seleucid-s:#e2eaf6;--greek:#1f6b62;--greek-s:#dfece8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--rome:#e2807d;--rome-s:#3a2221;--carthage:#c790ca;--carthage-s:#30213a;--ptolemaic:#d9b45c;--ptolemaic-s:#352c16;--seleucid:#86abe3;--seleucid-s:#1b2a40;--greek:#62b8aa;--greek-s:#1b3330}}
+:root[data-theme="dark"]{--rome:#e2807d;--rome-s:#3a2221;--carthage:#c790ca;--carthage-s:#30213a;--ptolemaic:#d9b45c;--ptolemaic-s:#352c16;--seleucid:#86abe3;--seleucid-s:#1b2a40;--greek:#62b8aa;--greek-s:#1b3330}
+[data-f="rome"]{--f:var(--rome);--f-soft:var(--rome-s)}
+[data-f="carthage"]{--f:var(--carthage);--f-soft:var(--carthage-s)}
+[data-f="ptolemaic"]{--f:var(--ptolemaic);--f-soft:var(--ptolemaic-s)}
+[data-f="seleucid"]{--f:var(--seleucid);--f-soft:var(--seleucid-s)}
+[data-f="greek"]{--f:var(--greek);--f-soft:var(--greek-s)}
+.toc h2.sub2{margin-top:26px}
+.toc .fl a{grid-template-columns:28px 1fr;align-items:center}
+.toc .fl .emblem{width:20px;height:20px}
+.toc .fl a.all span{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:0}
+.fsheets{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:18px 0 8px;max-width:68ch}
+.fsheets a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 10px 12px;border:1px solid var(--rule);border-top:4px solid var(--f);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none;text-align:center;font-size:15px;line-height:1.25}
+.fsheets a:hover{border-color:var(--f)}
+.fsheets a:focus-visible{outline:2px solid var(--f);outline-offset:2px}
+.fsheets .emblem{width:56px;height:56px}
+.fsheets small{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td a.pw{color:var(--ink);text-decoration-color:var(--f);text-underline-offset:3px;text-decoration-thickness:2px}
+.cover .sheets-link{margin:18px 0 0;font-size:16px}
+@media print{.fsheets{display:none}}
+</style>
+
+<div class="page">
+
+<nav class="toc" aria-label="Contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#s1"><span>1</span>Introduction</a></li>
+    <li><a href="#s2"><span>2</span>Components</a></li>
+    <li><a href="#s3"><span>3</span>The Map</a></li>
+    <li><a href="#s4"><span>4</span>Dice</a></li>
+    <li><a href="#s5"><span>5</span>Units</a></li>
+    <li><a href="#s6"><span>6</span>Powers &amp; Rosters</a></li>
+    <li><a href="#s7"><span>7</span>Sequence of Play</a></li>
+    <li><a href="#s8"><span>8</span>Movement</a></li>
+    <li><a href="#s9"><span>9</span>Land Battles</a></li>
+    <li><a href="#s10"><span>10</span>Flanking</a></li>
+    <li><a href="#s11"><span>11</span>Strongholds &amp; Sieges</a></li>
+    <li><a href="#s12"><span>12</span>War at Sea</a></li>
+    <li><a href="#s13"><span>13</span>Raising Troops</a></li>
+    <li><a href="#s14"><span>14</span>Barbarians</a></li>
+    <li><a href="#s15"><span>15</span>Victory &amp; Elimination</a></li>
+    <li><a href="#s16"><span>16</span>Quick Reference</a></li>
+  </ol>
+  <h2 class="sub2">Faction sheets</h2>
+  <ol class="fl">
+    <li><a href="faction-rome.html" data-f="rome"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><ellipse cx="33.6" cy="19.1" rx="3" ry="6.5" transform="rotate(-136.0 33.6 19.1)"/><ellipse cx="23.6" cy="27.0" rx="3" ry="6.5" transform="rotate(-157.0 23.6 27.0)"/><ellipse cx="17.1" cy="38.0" rx="3" ry="6.5" transform="rotate(-178.0 17.1 38.0)"/><ellipse cx="15.0" cy="50.6" rx="3" ry="6.5" transform="rotate(-199.0 15.0 50.6)"/><ellipse cx="17.5" cy="63.1" rx="3" ry="6.5" transform="rotate(-220.0 17.5 63.1)"/><ellipse cx="24.4" cy="73.9" rx="3" ry="6.5" transform="rotate(-241.0 24.4 73.9)"/><ellipse cx="34.7" cy="81.5" rx="3" ry="6.5" transform="rotate(-262.0 34.7 81.5)"/><ellipse cx="66.4" cy="19.1" rx="3" ry="6.5" transform="rotate(-44.0 66.4 19.1)"/><ellipse cx="76.4" cy="27.0" rx="3" ry="6.5" transform="rotate(-23.0 76.4 27.0)"/><ellipse cx="82.9" cy="38.0" rx="3" ry="6.5" transform="rotate(-2.0 82.9 38.0)"/><ellipse cx="85.0" cy="50.6" rx="3" ry="6.5" transform="rotate(19.0 85.0 50.6)"/><ellipse cx="82.5" cy="63.1" rx="3" ry="6.5" transform="rotate(40.0 82.5 63.1)"/><ellipse cx="75.6" cy="73.9" rx="3" ry="6.5" transform="rotate(61.0 75.6 73.9)"/><ellipse cx="65.3" cy="81.5" rx="3" ry="6.5" transform="rotate(82.0 65.3 81.5)"/></g><text x="50" y="57" text-anchor="middle" font-family="Marcellus SC, Georgia, serif" font-size="19" fill="var(--f)" letter-spacing="1">SPQR</text></svg>Rome</a></li>
+    <li><a href="faction-carthage.html" data-f="carthage"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)" stroke="var(--f)"><circle cx="50" cy="31" r="8" stroke="none"/><path d="M50 44 L66 78 L34 78 Z" stroke="none"/><path d="M28 36 L28 44 L72 44 L72 36" fill="none" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></g></svg>Carthage</a></li>
+    <li><a href="faction-ptolemaic.html" data-f="ptolemaic"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><path d="M36 38 C36 30 44 26 50 28 C56 30 60 36 62 44 C66 54 72 60 78 66 L64 66 C56 64 50 60 46 54 C42 48 38 44 36 38 Z"/><circle cx="38" cy="32" r="6.5"/><path d="M32 30 L25 34 L32 35 Z"/><rect x="46" y="60" width="3" height="11"/><rect x="53" y="60" width="3" height="11"/></g><path d="M24 74 L40 74 L44 70 L50 78 L56 70 L60 74 L76 74" fill="none" stroke="var(--f)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="38" cy="31" r="1.4" fill="var(--f-soft)"/></svg>Ptolemaic Egypt</a></li>
+    <li><a href="faction-seleucid.html" data-f="seleucid"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><path d="M41 17 Q50 21 59 17 L57 24 Q50 22 43 24 Z"/><path d="M50 24 C36 24 27 40 25 64 C31 46 40 36 50 35 C60 36 69 46 75 64 C73 40 64 24 50 24 Z"/><rect x="47" y="24" width="6" height="56"/><rect x="31" y="68" width="38" height="6"/><path d="M44 79 L56 79 L50 88 Z"/></g></svg>Seleucid Empire</a></li>
+    <li><a href="faction-greek.html" data-f="greek"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="none" stroke="var(--f)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 76 L50 26 L66 76"/><path d="M40 58 L60 58"/><path d="M30 32 L70 72"/><path d="M70 32 L30 72"/></g></svg>The Greek States</a></li>
+    <li><a class="all" href="factions.html"><span>All</span>All five, one per page</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<header class="cover">
+  <p class="eyebrow">Playtest edition · September 2026</p>
+  <h1>Antiquity</h1>
+  <p class="sub">Rules of Play</p>
+  <p class="lede">A game of empire in the ancient Mediterranean. Raise armies, march them across provinces, ship them over the sea, and win battles decided by twelve-sided dice and the width of the battle line.</p>
+  <p class="sheets-link">Each power has a one-page <a href="#s6">faction sheet</a> with its capital and build options.</p>
+</header>
+
+<!-- 1 -->
+<section id="s1">
+  <h2><span class="num">1</span>Introduction</h2>
+  <p>Antiquity is played by one to seven players. Each player leads one of the great powers of the ancient world — Rome, Carthage, the Hellenistic kingdoms, Persia and others — while barbarian tribes hold the edges of the map.</p>
+  <p>Every game is played from a <span class="term">scenario</span>. Scenarios range from a solo game, holding a vast empire together against revolt, to open wars between five or seven rival powers. Each scenario sheet sets out:</p>
+  <ul>
+    <li>which powers are in play, and the turn order</li>
+    <li>who starts where, with which units and capitals</li>
+    <li>which provinces raise barbarians</li>
+    <li>any special events, invasions or enemies</li>
+    <li>how the game is won</li>
+  </ul>
+  <p>This book covers the rules common to every scenario.</p>
+  <div class="box golden">
+    <p class="label">The golden rule</p>
+    <p>Where a scenario sheet contradicts this book, the scenario sheet wins.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2><span class="num">2</span>Components</h2>
+  <ul>
+    <li><strong>Map board</strong> — land territories and sea zones.</li>
+    <li><strong>Unit pieces</strong> in each power's colour, plus markers for wounded War Elephants.</li>
+    <li><strong>Twelve-sided dice (d12)</strong> — at least eight. Two colours help: one for the attacker, one for the defender.</li>
+    <li><strong>Control markers</strong> to show who owns each territory, and <strong>capital markers</strong>.</li>
+    <li><strong>Stronghold markers</strong>, and numbered <strong>siege markers</strong> (1–4).</li>
+    <li><strong>A gold tracker</strong> for each player.</li>
+    <li><strong>A battle mat</strong> laid out as in <span class="ref">§9.1</span>.</li>
+    <li><strong>A scenario sheet.</strong></li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section id="s3" class="major">
+  <h2><span class="num">3</span>The Map</h2>
+  <h3><span class="num">3.1</span>Territories and sea zones</h3>
+  <p>The board is divided into <span class="term">land territories</span> and <span class="term">sea zones</span>. Land units stand on land, and ships sail at sea.</p>
+  <p>Two spaces are <span class="term">adjacent</span> if they share a border. Narrow straits count as a border: Messina, the Bosporus, Gibraltar, Bonifacio and Hormuz.</p>
+
+  <h3><span class="num">3.2</span>Ownership</h3>
+  <p>Every land territory is owned by one power. You keep a territory until an enemy takes it, even if you leave no units there. Sea zones are never owned.</p>
+
+  <h3><span class="num">3.3</span>Income</h3>
+  <p>Each territory you own pays <strong>1 gold</strong> at the start of your turn. A capital pays <strong>2 gold</strong>. Sea zones pay nothing, and neither does a surrounded stronghold (<span class="ref">§11.3</span>).</p>
+
+  <h3><span class="num">3.4</span>Capitals</h3>
+  <p>Each power has a capital — its seat of power. Most scenarios use the usual seat (Roma for Rome, Carthage for Carthage, Alexandria for Ptolemaic Egypt, and so on), but a scenario may name a different one. Capitals are often victory objectives.</p>
+
+  <h3><span class="num">3.5</span>Strongholds</h3>
+  <p>A <span class="term">stronghold</span> is a territory with a walled city. Strongholds are usually capitals and major cities, but only the territories named on the scenario sheet count. A stronghold can hold off an army for several turns (<span class="ref">§11</span>).</p>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2><span class="num">4</span>Dice</h2>
+  <p>Every roll in Antiquity is a single d12. Each unit has a <span class="term">target number</span>. <strong>Roll the target or lower to score a hit.</strong></p>
+  <ul>
+    <li>A unit that is <strong>attacking</strong> uses its Attack, plus any modifiers.</li>
+    <li>A unit that is <strong>defending</strong> uses its Defense. The only thing that ever modifies Defense is the Hoplites' Phalanx (<span class="ref">§5</span>).</li>
+  </ul>
+  <p>Defense does not make a unit harder to kill. Every unit except the War Elephant dies to a single hit, attacking or defending. Defense is how hard a unit strikes back when it is attacked.</p>
+
+  <p class="dice-cap">Chance to hit on a d12</p>
+  <div class="dice" role="table" aria-label="Chance to hit by target number">
+    <div class="die"><div class="t">1</div><div class="p">8%</div><div class="bar"><i style="width:8%"></i></div></div>
+    <div class="die"><div class="t">2</div><div class="p">17%</div><div class="bar"><i style="width:17%"></i></div></div>
+    <div class="die"><div class="t">3</div><div class="p">25%</div><div class="bar"><i style="width:25%"></i></div></div>
+    <div class="die"><div class="t">4</div><div class="p">33%</div><div class="bar"><i style="width:33%"></i></div></div>
+    <div class="die"><div class="t">5</div><div class="p">42%</div><div class="bar"><i style="width:42%"></i></div></div>
+    <div class="die"><div class="t">6</div><div class="p">50%</div><div class="bar"><i style="width:50%"></i></div></div>
+    <div class="die"><div class="t">7</div><div class="p">58%</div><div class="bar"><i style="width:58%"></i></div></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section id="s5" class="major">
+  <h2><span class="num">5</span>Units</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Unit</th><th>Battle lane</th><th class="n">Attack</th><th class="n">Defense</th><th class="n">Move</th><th class="n">Cost</th><th>At sea</th></tr>
+      </thead>
+      <tbody>
+        <tr class="group"><td colspan="7">Land</td></tr>
+        <tr><td>Levy</td><td>Infantry</td><td class="n">3</td><td class="n">3</td><td class="n">1</td><td class="n gold">2</td><td>1 space</td></tr>
+        <tr><td>Heavy Infantry</td><td>Infantry</td><td class="n">4</td><td class="n">4</td><td class="n">1</td><td class="n gold">3</td><td>1 space · marine</td></tr>
+        <tr><td>Legion</td><td>Infantry</td><td class="n">4</td><td class="n">4</td><td class="n">1</td><td class="n gold">3</td><td>1 space · marine</td></tr>
+        <tr><td>Hoplite</td><td>Infantry</td><td class="n">4</td><td class="n">4</td><td class="n">1</td><td class="n gold">3</td><td>1 space · marine</td></tr>
+        <tr><td>Cavalry</td><td>Cavalry</td><td class="n">4</td><td class="n">3</td><td class="n">2</td><td class="n gold">4</td><td>2 spaces, Transport only</td></tr>
+        <tr><td>Horse Archer</td><td>Horse Archer</td><td class="n">4</td><td class="n">4</td><td class="n">2</td><td class="n gold">5</td><td>2 spaces, Transport only</td></tr>
+        <tr><td>General</td><td>General</td><td class="n">2</td><td class="n">3</td><td class="n">2</td><td class="n gold">4</td><td>1 space</td></tr>
+        <tr><td>Siege Engine</td><td>None, behind the lines</td><td class="n">—</td><td class="n">—</td><td class="n">1</td><td class="n gold">3</td><td>2 spaces, Transport only</td></tr>
+        <tr class="playtest"><td>War Elephant <span class="minus">*</span></td><td>Infantry or Cavalry</td><td class="n">5</td><td class="n">4</td><td class="n">2</td><td class="n gold">7</td><td>undecided</td></tr>
+        <tr class="group"><td colspan="7">Sea</td></tr>
+        <tr><td>Attack Boat</td><td>Naval line</td><td class="n">3</td><td class="n">3</td><td class="n">2</td><td class="n gold">2</td><td>carries 1</td></tr>
+        <tr><td>Transport</td><td>Naval line</td><td class="n">1</td><td class="n">1</td><td class="n">2</td><td class="n gold">2</td><td>carries 2</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:14px;color:var(--muted)"><span class="minus">*</span> Playtest unit. See the box at the end of this section.</p>
+
+  <div class="units">
+    <div class="unit">
+      <div><h4>Levy</h4><div class="stats"><b>3/3</b> · move 1 · cost 2</div></div>
+      <div>
+        <p>Cheap troops who fill out the battle line. A Levy counts toward a full line (which matters for Hoplites), but it cannot pacify a province and cannot fight as a marine.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Heavy Infantry</h4><div class="stats"><b>4/4</b> · move 1 · cost 3</div></div>
+      <div>
+        <p>The backbone of an army. Heavy Infantry, the Legion and the Hoplite are the three <span class="term">heavy infantry</span> units. They share the same stats, and each power can raise only one of them (<span class="ref">§6</span>). Every heavy infantry unit:</p>
+        <ul>
+          <li>calms an occupied barbarian province (<span class="ref">§14.2</span>)</li>
+          <li>fights as a marine when carried on an Attack Boat (<span class="ref">§12.5</span>)</li>
+        </ul>
+        <p>Heavy Infantry itself has no special rule.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Legion</h4><div class="stats"><b>4/4</b> · move 1 · cost 3</div></div>
+      <div>
+        <p><span class="rule-name">Manipular.</span> Legions attack at <span class="plus">+1</span> while their side's infantry line is <strong>not</strong> full. The legion wins the grind: it gets stronger as the battle thins the ranks. It is also the best unit for storming a city. An attacker's line at a stronghold has only four slots, so it is never full, and Legions attack at <span class="plus">+1</span> for the whole assault (<span class="ref">§11.4</span>).</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Hoplite</h4><div class="stats"><b>4/4</b> · move 1 · cost 3</div></div>
+      <div>
+        <p><span class="rule-name">Phalanx.</span> Hoplites get <span class="plus">+1</span> to <strong>both Attack and Defense</strong> while their side's infantry line <strong>is</strong> full, with all five front slots occupied. Levies count toward a full line. The phalanx wins the opening clash in the open field, and a full phalanx behind city walls is the hardest garrison to crack. It is no use for storming a city: an attacker's four-slot line at a stronghold is never full, so attacking Hoplites never get Phalanx there (<span class="ref">§11.4</span>). The line is checked at the start of each round (<span class="ref">§9.3</span>), so the Hoplites keep their bonus for the round in which the line breaks, and lose it from the following round.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Cavalry</h4><div class="stats"><b>4/3</b> · move 2 · cost 4</div></div>
+      <div>
+        <p>Moves 2 with no force-march penalty. Only one horseman fits in the front line. A second is not wasted: it is the only unit that can answer a flank attack (<span class="ref">§10</span>).</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Horse Archer</h4><div class="stats"><b>4/4</b> · move 2 · cost 5<br>Parthia only</div></div>
+      <div>
+        <p>Mounted bowmen who shoot, wheel away and shoot again. At Carrhae in 53 BC they destroyed Crassus's legions.</p>
+        <p><span class="rule-name">Limited.</span> Parthia may have at most <strong>two</strong> Horse Archers on the board. If one is killed, Parthia may buy another.</p>
+        <p><span class="rule-name">Own lane.</span> A Horse Archer fights from the one-slot Horse Archer lane in the main wing, or from the Flank Horse Archer post in a flanking battle (<span class="ref">§9.1</span>). The lane sits outside the normal battle width. No enemy lane faces it, so hits reach it only by spillover, after every other lane except the General (<span class="ref">§9.4</span>).</p>
+        <p><span class="rule-name">Command.</span> Gets <span class="plus">+1</span> from a General in the same wing, like Cavalry.</p>
+        <p><span class="rule-name">Not in assaults.</span> There is no Horse Archer lane when Parthia assaults a stronghold. Its Horse Archers fight in the Cavalry lane as ordinary Cavalry (<span class="ref">§11.4</span>). A Parthian garrison defending a stronghold keeps the lane.</p>
+        <p>Moves 2 with no force-march penalty.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>General</h4><div class="stats"><b>2/3</b> · move 2 · cost 4</div></div>
+      <div>
+        <p><span class="rule-name">Unique.</span> A power may have only one General on the board. If yours is killed, you may buy another.</p>
+        <p><span class="rule-name">Command.</span> While your General stands in a General post, your Cavalry and Horse Archers in the same wing attack at <span class="plus">+1</span>, and so do War Elephants standing in that wing's Cavalry lane. A battle has two wings: the <span class="term">main</span> wing and, in a flanking battle, the <span class="term">flank</span>. A General in the General post commands the Cavalry and Horse Archer lanes, and a General in the Flank General post commands the Flank Cavalry and Flank Horse Archer posts (<span class="ref">§10.2</span>).</p>
+        <p><span class="rule-name">Protected.</span> A General is never struck while any other unit on its side still stands. Its own hits always land on the enemy army, never on the enemy General (<span class="ref">§9.4</span>).</p>
+        <p>Moves 2 with no penalty. A General may board either kind of ship (1 space), but never fights as a marine.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Attack Boat</h4><div class="stats"><b>3/3</b> · move 2 · cost 2</div></div>
+      <div>
+        <p>A warship. It carries one unit: a heavy infantry unit, who fights from the deck as a marine, or a General.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Transport</h4><div class="stats"><b>1/1</b> · move 2 · cost 2</div></div>
+      <div>
+        <p>Carries 2 spaces of land units: Levies, heavy infantry and Generals take 1 space each, and Cavalry and Siege Engines take 2. A Transport fights badly, but still takes a place in the naval line. Its cargo cannot fight.</p>
+      </div>
+    </div>
+    <div class="unit">
+      <div><h4>Siege Engine</h4><div class="stats"><b>—/—</b> · move 1 · cost 3</div></div>
+      <div>
+        <p>Rams, towers and stone-throwers, hauled along with an army.</p>
+        <p><span class="rule-name">Breacher.</span> If a Siege Engine is part of an attack on a stronghold, the breach roll gets <span class="plus">+2</span> (<span class="ref">§11.2</span>). A second engine adds nothing more.</p>
+        <p><span class="rule-name">Behind the lines.</span> A Siege Engine never takes a battle slot, never rolls and is never struck. It is destroyed only when every other unit on its side in the battle is destroyed. It retreats with its army.</p>
+        <p>Moves 1 and cannot force march. It cannot attack or take a territory on its own, and it does not count toward a garrison. It boards Transports only (2 spaces).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box playtest">
+    <p class="label">Playtest unit · War Elephant · Carthage and Persia only</p>
+    <p><strong>Attack 5 · Defense 4 · Move 2 · Cost 7.</strong> Not yet in the digital game. Use it only if your group agrees to.</p>
+    <ul>
+      <li><strong>Tough.</strong> The first hit only wounds an elephant (mark it). A second hit kills it. A wounded elephant fights normally.</li>
+      <li><strong>Rampage.</strong> If the die that hits an elephant shows a <strong>natural 1</strong>, the elephant dies at once, wounded or not. It also tramples: resolve one normal hit against another of its own side's front-line units in the same wing (main or flank). Take the nearest unit in the elephant's own lane (the lower-numbered slot if two are equally near). If there is none, take slot 1 of the wing's other lane, rolling down if it is empty. Units in reserve and Generals are never trampled. A trampled elephant is only wounded, and does not rampage in turn. If no friendly unit can be trampled, the trample does nothing.</li>
+      <li><strong>Flexible.</strong> When lining up, choose whether each elephant stands in the Infantry lane or the Cavalry lane. An elephant in a Cavalry lane gets Command from its General, just as Cavalry do.</li>
+      <li><strong>Still undecided:</strong> whether elephants can board ships.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2><span class="num">6</span>Powers &amp; Rosters</h2>
+  <p>Each power may only raise the units on its roster. Levies, Cavalry, Siege Engines and a General are open to every player's power, and so are ships unless a power is marked as having no navy. What sets the powers apart is their heavy infantry.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Power</th><th>Heavy infantry</th><th>Also</th></tr></thead>
+      <tbody>
+        <tr><td><a class="pw" data-f="rome" href="faction-rome.html">Rome</a></td><td>Legion</td><td>—</td></tr>
+        <tr><td>The Byzantine Empire <span style="color:var(--muted)">/ Eastern Rome</span></td><td>Legion</td><td>—</td></tr>
+        <tr><td><a class="pw" data-f="carthage" href="faction-carthage.html">Carthage</a></td><td>Heavy Infantry</td><td>War Elephant (playtest)</td></tr>
+        <tr><td>Macedon</td><td>Hoplite</td><td>—</td></tr>
+        <tr><td><a class="pw" data-f="seleucid" href="faction-seleucid.html">Seleucid Empire</a></td><td>Hoplite</td><td>—</td></tr>
+        <tr><td><a class="pw" data-f="ptolemaic" href="faction-ptolemaic.html">Ptolemaic Egypt</a></td><td>Hoplite</td><td>—</td></tr>
+        <tr><td><a class="pw" data-f="greek" href="faction-greek.html">Achaean League</a></td><td>Hoplite</td><td>—</td></tr>
+        <tr><td>The Persian Empire</td><td>Heavy Infantry</td><td>War Elephant (playtest)</td></tr>
+        <tr><td>Parthia</td><td>Heavy Infantry</td><td>Horse Archer (up to 2) · No navy: cannot build ships</td></tr>
+        <tr><td>Barbarians <span style="color:var(--muted)">(non-player)</span></td><td>Heavy Infantry</td><td>No Generals, Siege Engines or ships</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>A scenario may give a power a period name, such as Eastern Rome for the Byzantine Empire. A renamed power keeps its roster.</p>
+  <p class="label" style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:22px 0 0">Faction sheets</p>
+  <div class="fsheets"><a href="faction-rome.html" data-f="rome"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><ellipse cx="33.6" cy="19.1" rx="3" ry="6.5" transform="rotate(-136.0 33.6 19.1)"/><ellipse cx="23.6" cy="27.0" rx="3" ry="6.5" transform="rotate(-157.0 23.6 27.0)"/><ellipse cx="17.1" cy="38.0" rx="3" ry="6.5" transform="rotate(-178.0 17.1 38.0)"/><ellipse cx="15.0" cy="50.6" rx="3" ry="6.5" transform="rotate(-199.0 15.0 50.6)"/><ellipse cx="17.5" cy="63.1" rx="3" ry="6.5" transform="rotate(-220.0 17.5 63.1)"/><ellipse cx="24.4" cy="73.9" rx="3" ry="6.5" transform="rotate(-241.0 24.4 73.9)"/><ellipse cx="34.7" cy="81.5" rx="3" ry="6.5" transform="rotate(-262.0 34.7 81.5)"/><ellipse cx="66.4" cy="19.1" rx="3" ry="6.5" transform="rotate(-44.0 66.4 19.1)"/><ellipse cx="76.4" cy="27.0" rx="3" ry="6.5" transform="rotate(-23.0 76.4 27.0)"/><ellipse cx="82.9" cy="38.0" rx="3" ry="6.5" transform="rotate(-2.0 82.9 38.0)"/><ellipse cx="85.0" cy="50.6" rx="3" ry="6.5" transform="rotate(19.0 85.0 50.6)"/><ellipse cx="82.5" cy="63.1" rx="3" ry="6.5" transform="rotate(40.0 82.5 63.1)"/><ellipse cx="75.6" cy="73.9" rx="3" ry="6.5" transform="rotate(61.0 75.6 73.9)"/><ellipse cx="65.3" cy="81.5" rx="3" ry="6.5" transform="rotate(82.0 65.3 81.5)"/></g><text x="50" y="57" text-anchor="middle" font-family="Marcellus SC, Georgia, serif" font-size="19" fill="var(--f)" letter-spacing="1">SPQR</text></svg><span>Rome</span><small>Capital · Roma</small></a><a href="faction-carthage.html" data-f="carthage"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)" stroke="var(--f)"><circle cx="50" cy="31" r="8" stroke="none"/><path d="M50 44 L66 78 L34 78 Z" stroke="none"/><path d="M28 36 L28 44 L72 44 L72 36" fill="none" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></g></svg><span>Carthage</span><small>Capital · Carthage</small></a><a href="faction-ptolemaic.html" data-f="ptolemaic"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><path d="M36 38 C36 30 44 26 50 28 C56 30 60 36 62 44 C66 54 72 60 78 66 L64 66 C56 64 50 60 46 54 C42 48 38 44 36 38 Z"/><circle cx="38" cy="32" r="6.5"/><path d="M32 30 L25 34 L32 35 Z"/><rect x="46" y="60" width="3" height="11"/><rect x="53" y="60" width="3" height="11"/></g><path d="M24 74 L40 74 L44 70 L50 78 L56 70 L60 74 L76 74" fill="none" stroke="var(--f)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="38" cy="31" r="1.4" fill="var(--f-soft)"/></svg><span>Ptolemaic Egypt</span><small>Capital · Alexandria</small></a><a href="faction-seleucid.html" data-f="seleucid"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="var(--f)"><path d="M41 17 Q50 21 59 17 L57 24 Q50 22 43 24 Z"/><path d="M50 24 C36 24 27 40 25 64 C31 46 40 36 50 35 C60 36 69 46 75 64 C73 40 64 24 50 24 Z"/><rect x="47" y="24" width="6" height="56"/><rect x="31" y="68" width="38" height="6"/><path d="M44 79 L56 79 L50 88 Z"/></g></svg><span>Seleucid Empire</span><small>Capital · Antioch</small></a><a href="faction-greek.html" data-f="greek"><svg class="emblem" viewBox="0 0 100 100" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="var(--f-soft)" stroke="var(--f)" stroke-width="2.5"/><circle cx="50" cy="50" r="43" fill="none" stroke="var(--f)" stroke-width="1.2" stroke-dasharray="1.5 3"/><g fill="none" stroke="var(--f)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M34 76 L50 26 L66 76"/><path d="M40 58 L60 58"/><path d="M30 32 L70 72"/><path d="M70 32 L30 72"/></g></svg><span>The Greek States</span><small>Capital · Corinth</small></a></div>
+</section>
+
+<!-- 7 -->
+<section id="s7" class="major">
+  <h2><span class="num">7</span>Sequence of Play</h2>
+  <p>The game is played in <span class="term">rounds</span>. In each round, every player takes a turn in the order on the scenario sheet. Then the barbarians act, and the round ends.</p>
+
+  <h3><span class="num">7.1</span>Your turn</h3>
+  <ol class="steps">
+    <li><div><strong>Collect income.</strong> Take gold for every territory you own right now (<span class="ref">§3.3</span>). Unspent gold carries over from turn to turn.</div></li>
+    <li><div><strong>Movement stage.</strong> Move your units and declare your attacks (<span class="ref">§8</span>). Until you announce the Combat stage, you may take back any move or declared attack.</div></li>
+    <li><div><strong>Combat stage.</strong> Fight each declared battle, in the order you declared them (<span class="ref">§9–12</span>).</div></li>
+    <li><div><strong>Placement stage.</strong> Units that did not fight and still have moves left may make non-combat moves. Then buy and place new units (<span class="ref">§13</span>). Your turn ends.</div></li>
+  </ol>
+
+  <h3><span class="num">7.2</span>End of the round</h3>
+  <ol class="steps">
+    <li><div><strong>Barbarian phase.</strong> Resolve any scenario event, roll for barbarian spawns, and fight any uprisings (<span class="ref">§14</span>).</div></li>
+    <li><div><strong>Check victory</strong> (<span class="ref">§15</span>). If nobody has won, begin the next round.</div></li>
+  </ol>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <h2><span class="num">8</span>Movement</h2>
+
+  <h3><span class="num">8.1</span>Steps</h3>
+  <p>A unit moves one <span class="term">step</span> at a time, into an adjacent space. Units move individually, so a stack can split up and send units in different directions. Every unit's moves refresh at the start of its owner's turn.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Unit</th><th class="n">Steps</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Infantry (Levy, heavy infantry)</td><td class="n">1</td><td>May force march a second step (<span class="ref">§8.2</span>)</td></tr>
+        <tr><td>Siege Engine</td><td class="n">1</td><td>Cannot force march</td></tr>
+        <tr><td>Cavalry, Horse Archer, General, War Elephant</td><td class="n">2</td><td>No penalty</td></tr>
+        <tr><td>Attack Boat, Transport</td><td class="n">2</td><td>Sea zones only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="num">8.2</span>Force march</h3>
+  <p>Infantry may take a second step in the same turn. That step is a <span class="term">force march</span>. If the force-marching step is an attack, the unit attacks at <span class="minus">−1</span> for that battle. Cavalry never take this penalty, even when they travel with force-marching infantry.</p>
+
+  <h3><span class="num">8.3</span>Where units can go</h3>
+  <ul>
+    <li><strong>Your own territory:</strong> move in freely.</li>
+    <li><strong>An enemy or barbarian territory with no units in it:</strong> take it at once, and flip its control marker. Units with steps left may keep moving.</li>
+    <li><strong>A territory with enemy units in it:</strong> this is an attack. Declare it (<span class="ref">§8.4</span>). You cannot move through a defended territory. Attacks on a garrisoned stronghold follow <span class="ref">§11</span>.</li>
+    <li><strong>A sea zone:</strong> see <span class="ref">§12</span>.</li>
+  </ul>
+
+  <h3><span class="num">8.4</span>Declaring attacks</h3>
+  <p>To declare an attack, name the attacking units and the territory they are attacking. The units stay where they are until the Combat stage. Units may move first and attack afterwards. For example, Cavalry can step into your own territory and then attack from there, and infantry can do the same as a force march at <span class="minus">−1</span>.</p>
+  <p>If you attack the same territory from two or more places, it is one battle (<span class="ref">§10</span>).</p>
+
+  <h3><span class="num">8.5</span>Fighting ends movement</h3>
+  <p>Every unit that fights a battle, on either side, has finished moving for the turn. This includes survivors and units that retreated.</p>
+</section>
+
+<!-- 9 -->
+<section id="s9" class="major">
+  <h2><span class="num">9</span>Land Battles</h2>
+
+  <h3><span class="num">9.1</span>The battle mat</h3>
+  <p>Each side forms up in <span class="term">lanes</span>. A lane has a fixed number of <span class="term">front slots</span>. Only units in front slots roll dice. Everyone else waits in that lane's <span class="term">reserve</span>, behind the line. A unit may only stand in its own lane.</p>
+  <div class="mat" aria-label="Battle mat: infantry five slots, cavalry one, general one, Parthian horse archer one, and flank posts">
+    <div class="mat-grid">
+      <div class="mat-lane"><b>Infantry</b>5 wide</div>
+      <div class="slot">1</div><div class="slot">2</div><div class="slot">3</div><div class="slot">4</div><div class="slot">5</div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div class="slot def">2</div><div class="slot def">3</div><div class="slot def">4</div><div class="slot def">5</div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Cavalry</b>1 wide</div>
+      <div class="slot">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>General</b>1 wide</div>
+      <div class="slot">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Horse Archer</b>Parthia only</div>
+      <div class="slot">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Flank Infantry</b>flanking only</div>
+      <div class="slot flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot none">none</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Flank Cavalry</b>flanking only</div>
+      <div class="slot flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Flank General</b>flanking only</div>
+      <div class="slot flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Flank Horse Archer</b>Parthia, flanking</div>
+      <div class="slot flank">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def flank">1</div><div></div><div></div><div></div><div></div>
+    </div>
+    <div class="mat-key">
+      <span><i></i>Attacker slot</span>
+      <span><i class="def"></i>Defender slot</span>
+      <span><i class="flank"></i>Flank post, used only in flanking battles (§10)</span>
+    </div>
+  </div>
+  <p>The two sides face each other slot for slot: attacker slot 1 faces defender slot 1, and so on. The Horse Archer lanes are used only by Parthia. Every other power leaves them empty.</p>
+
+  <h3><span class="num">9.2</span>Lining up</h3>
+  <p>Both sides start by lining up <strong>strongest first</strong>: in each lane, the most expensive units take the front slots, with higher Attack breaking ties. Then each side may rearrange its own line. <strong>The defender rearranges first, then the attacker.</strong></p>
+  <ul>
+    <li>Within a lane, swap freely between front slots and reserve, and set the order of the reserve.</li>
+    <li>A General may move between the General post and the Flank General post, and a Horse Archer between the Horse Archer lane and the Flank Horse Archer post. No other unit may change lanes (War Elephants choose their lane here).</li>
+    <li>Siege Engines take no slot. They wait behind the lines.</li>
+    <li>Barbarians never rearrange. They always line up strongest first.</li>
+  </ul>
+
+  <h3><span class="num">9.3</span>Fighting a round</h3>
+  <ol class="steps">
+    <li><div><strong>Check conditions.</strong> Is each infantry line full, with all five front slots occupied? Is each General in its post? These decide this round's bonuses. Losses in this round change nothing until the next round's check (<span class="ref">§9.5</span>).</div></li>
+    <li><div><strong>Roll.</strong> Both sides roll one d12 for every unit in a front slot, including marines (<span class="ref">§12.5</span>). Attackers roll against Attack plus modifiers, and defenders against Defense (plus Phalanx, for Hoplites).</div></li>
+    <li><div><strong>Assign hits</strong> (<span class="ref">§9.4</span>). All dice count, including those of units killed this round, so combat is simultaneous.</div></li>
+    <li><div><strong>Remove casualties.</strong></div></li>
+    <li><div><strong>Refill.</strong> Empty front slots are filled from the same lane's reserve, in reserve order.</div></li>
+    <li><div><strong>Continue or retreat.</strong> The attacker may retreat (<span class="ref">§9.6</span>). Otherwise fight another round.</div></li>
+  </ol>
+
+  <h3><span class="num">9.4</span>Where hits land</h3>
+  <ul>
+    <li><strong>Straight ahead.</strong> A hit rolled from slot 3 strikes the enemy unit in slot 3 of the same lane.</li>
+    <li><strong>Roll down.</strong> If that slot is empty, or its unit has already been killed this round, the hit strikes the nearest enemy still standing in that lane. If two are equally near, the hit strikes the lower-numbered slot.</li>
+    <li><strong>Reserves are safe.</strong> Units in reserve are never hit. If a lane runs out of standing front-line units partway through a round, any further hits into that lane are lost.</li>
+    <li><strong>Spillover.</strong> If an enemy lane was <em>already empty</em> when the round began, hits aimed at it spill into the enemy's first lane that still has units, in this order: <strong>Infantry → Cavalry → Flank Infantry → Flank Cavalry → Horse Archer → Flank Horse Archer</strong>. The hit strikes slot 1 of that lane (rolling down if slot 1 is empty). This is how cavalry with no cavalry to fight start cutting into the infantry. Horse Archers are reached only after every other lane except the General's has fallen.</li>
+    <li><strong>Generals come last.</strong> Hits are never aimed at a General post. They spill into a General only when nothing else on that side is standing. A General's own hits always spill onto the enemy army.</li>
+  </ul>
+
+  <div class="box example">
+    <p class="label">Example round</p>
+    <p>Rome attacks with 3 Legions, 1 Cavalry and a General. Carthage defends with 5 Heavy Infantry and 1 Cavalry.</p>
+    <p>The Roman infantry line has 3 of 5 slots filled, so it is not full: the Legions attack at 5 (Manipular). The General is in its post, so the Roman Cavalry attacks at 5. The General itself rolls against 2. Carthage rolls against its Defense: 4 for each Heavy Infantry, 3 for the Cavalry.</p>
+    <p>The Legion in slot 2 hits, killing the Heavy Infantry in Carthage's slot 2. The General hits too, and its hit spills into Carthage's infantry, slot 1.</p>
+    <p>Carthage hits from infantry slots 4 and 5. Roman slot 4 is empty, so the first hit rolls down to the nearest standing Legion, in slot 3. The second hit from slot 5 would also reach slot 3 first, but that Legion is already dead, so it rolls on to slot 2.</p>
+    <p>Rome loses two Legions and Carthage loses two Heavy Infantry. Neither side has infantry in reserve, so the gaps stay open. The Roman line is still not full, so the last Legion keeps its +1 next round.</p>
+  </div>
+
+  <h3><span class="num">9.5</span>Modifiers</h3>
+  <p>Modifiers stack. All of them apply to <strong>Attack only</strong>, except Phalanx, which also applies to Defense. Every other defending unit rolls its plain Defense.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Modifier</th><th class="n">Attack</th><th>When</th></tr></thead>
+      <tbody>
+        <tr><td>Force march</td><td class="n minus">−1</td><td>Infantry whose attack was a second step (<span class="ref">§8.2</span>)</td></tr>
+        <tr><td>Amphibious assault</td><td class="n minus">−1</td><td>Troops landing from ships onto a defended shore (<span class="ref">§12.3</span>)</td></tr>
+        <tr><td>Manipular</td><td class="n plus">+1</td><td>Legions, while their infantry line is not full</td></tr>
+        <tr><td>Phalanx</td><td class="n plus">+1</td><td>Hoplites, while their infantry line is full. Also <span class="plus">+1</span> Defense</td></tr>
+        <tr><td>Command</td><td class="n plus">+1</td><td>Cavalry, Horse Archers, and War Elephants in a Cavalry lane, in the same wing (main or flank) as their General</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3><span class="num">9.6</span>Retreat</h3>
+  <p>Before any round, including the first, the attacking player may call off the assault. All surviving attackers return to the territory the main army attacked from. Landing troops go back aboard their ships instead, and any who no longer fit are lost. The defender keeps the territory.</p>
+  <p>Only a player who is attacking may retreat. Defenders, barbarians and uprisings (<span class="ref">§14.3</span>) never retreat.</p>
+
+  <h3><span class="num">9.7</span>Ending a battle</h3>
+  <ul>
+    <li><strong>Defender destroyed:</strong> the attacker wins. Surviving attackers move into the territory and take control of it. The exception is a garrison that sallies out of a stronghold, which stays inside its walls (<span class="ref">§11.5</span>).</li>
+    <li><strong>Attacker destroyed:</strong> the defender holds.</li>
+    <li><strong>Both destroyed in the same round:</strong> the territory stays with the defender, with no units in it.</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2><span class="num">10</span>Flanking</h2>
+  <p>If you attack one territory from two or more of your territories in the same turn, all of those attackers fight <strong>one battle</strong>, not several.</p>
+
+  <h3><span class="num">10.1</span>Main army and flank</h3>
+  <p>The force with the most units is the <span class="term">main army</span>. Every other force is a <span class="term">flanking detachment</span>. If the two largest forces are tied, the attacker chooses which is the main army. This is decided on the map, when you choose how to split your forces, not on the battle mat.</p>
+
+  <h3><span class="num">10.2</span>The flank posts</h3>
+  <p>The main lanes are unchanged: everyone in front fights exactly as usual. Each side also gets flank posts:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th class="n">Flank Infantry</th><th class="n">Flank Cavalry</th><th class="n">Flank General</th><th class="n">Flank Horse Archer</th></tr></thead>
+      <tbody>
+        <tr><td>Attacker</td><td class="n">1</td><td class="n">1</td><td class="n">1</td><td class="n">1*</td></tr>
+        <tr><td>Defender</td><td class="n">—</td><td class="n">1</td><td class="n">1</td><td class="n">1*</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    <li><strong>The attacker's flank posts</strong> are filled only from the flanking detachment. Detachment units that do not fit in a flank post join the main lanes.</li>
+    <li><strong>The defender's Flank Cavalry must be a spare.</strong> It comes only from cavalry beyond the one already in the front line, and the defender never pulls its front-line horseman across. Covering a flank costs the defender nothing up front, but it takes a second cavalryman.</li>
+    <li><strong>Generals can flex.</strong> An attacking General that marched with the detachment starts in the Flank General post. Either side may move its General between posts while lining up. A General in the flank post gives Command to the <em>Flank</em> Cavalry and <em>Flank</em> Horse Archer.</li>
+    <li><strong>Horse Archers flex too</strong> <span style="color:var(--muted)">(* Parthia only)</span>. They follow the same rules as Generals: an attacking Horse Archer that marched with the detachment starts in the Flank Horse Archer post, and either side may move one between posts while lining up. With both of its Horse Archers, Parthia can put one in each wing. A Parthian flank can be four wide: Flank Infantry, Flank Cavalry, Flank General and Flank Horse Archer.</li>
+  </ul>
+  <p>The attacker's advantage is extra room in the line. The defender has no infantry flank post, so nothing strikes the attacker's Flank Infantry directly. It can only be reached by spillover, once the attacker's main infantry and cavalry have fallen.</p>
+</section>
+
+<!-- 11 -->
+<section id="s11" class="major">
+  <h2><span class="num">11</span>Strongholds &amp; Sieges</h2>
+  <p>A stronghold (<span class="ref">§3.5</span>) with a full garrison cannot simply be stormed. First the attacker has to breach its walls, and that can take several turns. Even after the walls fall, the attacker still fights on a narrow front, street by street.</p>
+
+  <h3><span class="num">11.1</span>The garrison</h3>
+  <p>A stronghold is <span class="term">fully garrisoned</span> while it holds at least <strong>6 of its owner's land units</strong>. Generals and Siege Engines do not count.</p>
+  <ul>
+    <li><strong>Fully garrisoned:</strong> the attacker must breach the walls before any battle (<span class="ref">§11.2</span>).</li>
+    <li><strong>1 to 5 units:</strong> there are too few defenders to man the walls. There is no breach roll: the walls count as breached, and the attacker assaults at once (<span class="ref">§11.4</span>).</li>
+    <li><strong>No units:</strong> the stronghold is taken like any empty territory (<span class="ref">§8.3</span>).</li>
+  </ul>
+
+  <h3><span class="num">11.2</span>Breaching the walls</h3>
+  <p>When an attack on a fully garrisoned stronghold comes up in the Combat stage, the attacker first makes a <span class="term">breach roll</span> with one d12. On the breach target or lower, the walls are breached, and the assault is fought at once (<span class="ref">§11.4</span>).</p>
+  <p>The breach target starts at <strong>4</strong> and rises by 2 for every breach roll already failed in this siege, as shown by the siege marker. If a Siege Engine is part of the attack, the target is <span class="plus">+2</span> higher.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Siege marker</th><th class="n">Target</th><th class="n">Chance</th><th class="n">With engine</th><th class="n">Chance</th></tr></thead>
+      <tbody>
+        <tr><td>None (first roll)</td><td class="n">4</td><td class="n">33%</td><td class="n">6</td><td class="n">50%</td></tr>
+        <tr><td>1</td><td class="n">6</td><td class="n">50%</td><td class="n">8</td><td class="n">67%</td></tr>
+        <tr><td>2</td><td class="n">8</td><td class="n">67%</td><td class="n">10</td><td class="n">83%</td></tr>
+        <tr><td>3</td><td class="n">10</td><td class="n">83%</td><td class="n">12</td><td class="n">100%</td></tr>
+        <tr><td>4</td><td class="n">12</td><td class="n">100%</td><td class="n">—</td><td class="n">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>No garrison holds out for more than five turns, or four against a Siege Engine. Without an engine the walls usually fall on the second turn. With one, they usually fall on the first.</p>
+
+  <h3><span class="num">11.3</span>Laying siege</h3>
+  <p>If the breach roll fails, there is no battle this turn. Instead:</p>
+  <ul>
+    <li>Put a siege marker showing 1 on the stronghold, or raise the marker already there by 1.</li>
+    <li>The attacking units stay where they are. They count as having fought (<span class="ref">§8.5</span>), so they make no non-combat moves this turn.</li>
+    <li><strong>Arrows from the walls.</strong> If the failed roll shows a <strong>12</strong>, the defenders shoot down one attacking infantry unit. Line up the attacking infantry strongest first in the four assault slots (<span class="ref">§11.4</span>), then roll a d12 to choose the target: 1–3 slot 1, 4–6 slot 2, 7–9 slot 3, 10–12 slot 4. Reroll if you land on an empty slot. That unit takes one hit, so a War Elephant is only wounded. Reserves are never shot. If the attack has no infantry, the arrows miss.</li>
+  </ul>
+  <p>A stronghold with a siege marker on it is <span class="term">besieged</span>, and its breach target rises every turn. Whether the siege also cuts the city off depends on the size of the besieging army:</p>
+  <ul>
+    <li><strong>Surrounded.</strong> The besieger has at least <strong>6 land units</strong> next to the stronghold, in adjacent territories or aboard ships in adjacent sea zones. Generals and Siege Engines do not count. A surrounded city pays no income (<span class="ref">§3.3</span>), and its owner may place <strong>at most one Levy</strong> in it per turn, and nothing else (<span class="ref">§13.2</span>).</li>
+    <li><strong>Not surrounded.</strong> The besieger has fewer than 6. The breach rolls go on, but the city collects income and raises troops as normal.</li>
+  </ul>
+  <p>Check whether the city is surrounded at the moment it matters: when its owner collects income, and when it places units. Units may still march in and out of a besieged city as normal, so a city that holds out for a few turns can slowly strengthen its garrison.</p>
+  <p>The siege goes on as long as the besieger attacks the stronghold on every one of its turns. Remove the siege marker, so that any later siege starts again from the first roll, if:</p>
+  <ul>
+    <li>the besieger ends a turn without attacking the stronghold</li>
+    <li>the garrison falls below 6 units (the next attack is an assault with no breach roll)</li>
+    <li>the attacker retreats from the assault, or its army is destroyed</li>
+    <li>the stronghold changes hands</li>
+  </ul>
+
+  <h3><span class="num">11.4</span>Assaulting a stronghold</h3>
+  <p>Once the walls are breached, fight a land battle (<span class="ref">§9</span>) inside the city, with these changes:</p>
+  <ul>
+    <li><strong>Narrow line.</strong> The attacker's infantry lane is <strong>4 slots</strong> wide, while the defender keeps all 5. No attacker stands opposite defender slot 5, so hits from that slot roll down to attacker slot 4.</li>
+    <li><strong>The line is never full.</strong> A full infantry line needs all five slots (<span class="ref">§9.3</span>), and the attacker has only four. Attacking Legions always get Manipular, and attacking Hoplites never get Phalanx. Defending Hoplites get Phalanx (<span class="plus">+1</span> Defense) while the defender's five-slot line is full.</li>
+    <li><strong>No flanking.</strong> Attacks from several territories still fight one battle (<span class="ref">§10</span>), but neither side has flank posts. Every attacker joins the main lanes.</li>
+    <li><strong>No attacking Horse Archer lane.</strong> Parthian Horse Archers assaulting a stronghold fight in the Cavalry lane as ordinary Cavalry. A Parthian garrison keeps its Horse Archer lane.</li>
+    <li>Everything else is unchanged, including the force march and amphibious assault penalties.</li>
+  </ul>
+  <div class="mat" aria-label="Stronghold assault mat: attacker infantry four slots against defender five, cavalry one each, general one each, no flank posts">
+    <div class="mat-grid">
+      <div class="mat-lane"><b>Infantry</b>4 against 5</div>
+      <div class="slot">1</div><div class="slot">2</div><div class="slot">3</div><div class="slot">4</div><div class="slot none">wall</div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div class="slot def">2</div><div class="slot def">3</div><div class="slot def">4</div><div class="slot def">5</div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>Cavalry</b>1 wide</div>
+      <div class="slot">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-sep"></div>
+      <div class="mat-lane"><b>General</b>1 wide</div>
+      <div class="slot">1</div><div></div><div></div><div></div><div></div>
+      <div class="mat-lane">defender</div>
+      <div class="slot def">1</div><div></div><div></div><div></div><div></div>
+    </div>
+  </div>
+  <p>Barbarian uprisings (<span class="ref">§14.3</span>) break out inside the walls, so they ignore these rules and are fought as normal battles.</p>
+
+  <h3><span class="num">11.5</span>Breaking a siege</h3>
+  <p>The defender does not have to wait behind the walls. The garrison, a relief army, or both may attack the besiegers in the territories they are besieging from. This is an ordinary land battle (<span class="ref">§9</span>). The defender leaves the walls behind, so it gets no narrow line, and flanking (<span class="ref">§10</span>) works as usual.</p>
+  <ul>
+    <li><strong>The garrison stays inside the walls.</strong> Units that sally out of the stronghold never leave it. Win or lose, survivors remain in the stronghold, and they do not take the besiegers' territory even if they destroy every unit there. A relief army from elsewhere follows the normal rules (<span class="ref">§9.7</span>). Units that sallied count as having fought (<span class="ref">§8.5</span>).</li>
+    <li>If the besieger is left with fewer than 6 land units next to the stronghold, the city is no longer surrounded.</li>
+    <li>If the besiegers are destroyed, or do not attack the stronghold on their next turn, the siege marker is removed (<span class="ref">§11.3</span>).</li>
+  </ul>
+
+  <div class="box example">
+    <p class="label">Example siege</p>
+    <p>Rome attacks Carthage, a stronghold held by 5 Heavy Infantry and 1 Cavalry. The Roman army has 6 Legions, 1 Cavalry and a General.</p>
+    <p><strong>Turn 1.</strong> Rome needs a 4 or lower and rolls 9. Carthage gets siege marker 1. The six Legions stay in their territory next door, which is enough to surround the city, so Carthage pays no income. On its own turn, Carthage buys a Levy in the city (the most a surrounded stronghold may place) and marches in a Heavy Infantry from a neighbouring territory. The garrison is now 8.</p>
+    <p><strong>Turn 2.</strong> A Siege Engine that Rome brought up in its last Placement stage joins the attack. The target is 6, plus 2 for the engine, so 8. Rome rolls 7, and the walls are breached.</p>
+    <p><strong>The assault.</strong> Four Legions fill the narrow line and two wait in reserve. A line of four is never full, so every Legion attacks at 5 (Manipular) from the first round. Carthage answers with five Heavy Infantry in its front line, rolling against their Defense of 4, with the Levy and the extra Heavy Infantry in reserve.</p>
+  </div>
+</section>
+
+<!-- 12 -->
+<section id="s12" class="major">
+  <h2><span class="num">12</span>War at Sea</h2>
+
+  <h3><span class="num">12.1</span>Ships</h3>
+  <p>Ships are built in sea zones and never go ashore. They move 2 steps between adjacent sea zones.</p>
+
+  <h3><span class="num">12.2</span>Boarding</h3>
+  <p>A land unit boards a ship by stepping from a coastal territory into an adjacent sea zone where you have a ship with room. Boarding uses one step. Units aboard move with their ship.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Ship</th><th class="n">Space</th><th>May carry</th></tr></thead>
+      <tbody>
+        <tr><td>Attack Boat</td><td class="n">1</td><td>One heavy infantry unit (as a marine) or one General</td></tr>
+        <tr><td>Transport</td><td class="n">2</td><td>Levy, heavy infantry, General (1 space each); Cavalry, Siege Engine (2 spaces)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>When heavy infantry board and both kinds of ship have room, the owner chooses. On an Attack Boat they fight as marines, but in the front of the line. On a Transport they are safer cargo that cannot fight.</p>
+
+  <h3><span class="num">12.3</span>Landing</h3>
+  <p>Units aboard ship land by stepping onto an adjacent land territory. Landing counts as a step, and the ships stay at sea.</p>
+  <ul>
+    <li><strong>Your territory, or one with no units in it:</strong> the troops land, and take the territory if it was an enemy's.</li>
+    <li><strong>A defended territory:</strong> this is an <span class="term">amphibious assault</span>, and the landing troops attack at <span class="minus">−1</span>. If they retreat or are beaten back, survivors return to the ships if there is room. Any who do not fit are lost.</li>
+  </ul>
+
+  <h3><span class="num">12.4</span>Naval battles</h3>
+  <p>Moving ships into a sea zone that holds enemy ships is an attack, and is declared and fought like a land battle. At sea there is only <strong>one lane: the naval line, 4 slots wide</strong>, shared by Attack Boats and Transports.</p>
+  <p>Lining up strongest first puts Attack Boats in front of Transports. A convoy without enough escorts to fill the line has to put Transports in it, and pays for that in lost cargo. With only one lane, hits never spill at sea. All other battle rules — rounds, roll-down, retreat — are the same as on land.</p>
+
+  <h3><span class="num">12.5</span>Marines</h3>
+  <p>Heavy infantry aboard an Attack Boat fight from its deck. A marine rolls its own die, with its own Attack or Defense, from the boat's slot. A hit on that slot kills the marine first, and the next hit sinks the boat. A loaded Attack Boat therefore rolls two dice and takes two hits to clear. It adds fighting strength without taking an extra slot.</p>
+
+  <h3><span class="num">12.6</span>Sinking</h3>
+  <p>When a ship sinks, everything aboard goes down with it.</p>
+</section>
+
+<!-- 13 -->
+<section id="s13">
+  <h2><span class="num">13</span>Raising Troops</h2>
+
+  <h3><span class="num">13.1</span>Non-combat moves</h3>
+  <p>At the start of the Placement stage, any unit that did not fight this turn and still has steps left may move. It can go into your own territories or empty ones, board ships, sail, and land on friendly or empty shores. <strong>No attacks</strong> are allowed in this stage, and that includes sailing into enemy ships.</p>
+
+  <h3><span class="num">13.2</span>Buying</h3>
+  <ul>
+    <li>Spend gold on units from your power's roster (<span class="ref">§6</span>).</li>
+    <li><strong>Land units</strong> are placed in any territory you owned at the <em>start</em> of your turn and still own. Ground you took this turn cannot raise troops yet. A surrounded stronghold can take at most one Levy per turn (<span class="ref">§11.3</span>).</li>
+    <li><strong>Ships</strong> are placed in any sea zone adjacent to such a territory.</li>
+    <li>You may have only one General on the board (<span class="ref">§5</span>).</li>
+    <li>New units cannot move until your next turn.</li>
+    <li>Unspent gold is kept for later turns.</li>
+  </ul>
+</section>
+
+<!-- 14 -->
+<section id="s14" class="major">
+  <h2><span class="num">14</span>Barbarians</h2>
+  <p>Barbarians are a non-player power. They hold territory at the start of the game and defend it. They collect no income, buy nothing, and never retreat. Unless a scenario says otherwise, they never attack.</p>
+
+  <h3><span class="num">14.1</span>Spawn provinces</h3>
+  <p>The scenario sheet lists the <span class="term">spawn provinces</span>, usually barbarian homelands at the edges of the map. In each Barbarian phase, roll a d12 for every spawn province. On a success, one barbarian Levy appears there.</p>
+
+  <h3><span class="num">14.2</span>Unrest and pacification</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>The spawn province is…</th><th class="n">Levy on</th><th class="n">Chance</th></tr></thead>
+      <tbody>
+        <tr><td>Held by barbarians</td><td class="n">1–4</td><td class="n">33%</td></tr>
+        <tr><td>Occupied by you, with heavy infantry there <span style="color:var(--muted)">(pacified)</span></td><td class="n">1–4</td><td class="n">33%</td></tr>
+        <tr><td>Occupied by you, without heavy infantry <span style="color:var(--muted)">(unrest)</span></td><td class="n">1–8</td><td class="n">67%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Only heavy infantry (Heavy Infantry, Legion or Hoplite) keep a province calm. Levies and Cavalry do not. Occupying a province stirs up unrest, and holding it quietly takes a real garrison.</p>
+
+  <h3><span class="num">14.3</span>Uprisings</h3>
+  <p>If a Levy appears in a province you occupy:</p>
+  <ul>
+    <li><strong>You have units there:</strong> fight a battle <strong>immediately</strong>. Your army defends, the barbarians attack, and neither side may retreat.</li>
+    <li><strong>You have no units there:</strong> the province goes back to the barbarians.</li>
+  </ul>
+
+  <h3><span class="num">14.4</span>Rolling for the barbarians</h3>
+  <p>Any player who is not in the battle rolls the barbarians' dice. Barbarians always line up strongest first and never rearrange.</p>
+
+  <h3><span class="num">14.5</span>Scenario events</h3>
+  <p>Some scenarios add more to the Barbarian phase, such as a random event every round, barbarian invasions across unguarded frontiers, or a named enemy that roams the map. Those rules are on the scenario sheet. Resolve any event first, then the spawn rolls, then any invasions.</p>
+</section>
+
+<!-- 15 -->
+<section id="s15">
+  <h2><span class="num">15</span>Victory &amp; Elimination</h2>
+
+  <h3><span class="num">15.1</span>Winning</h3>
+  <p>The scenario sheet says how the game is won. Victory is checked at the end of every round, after the Barbarian phase. Common types include:</p>
+  <ul>
+    <li><strong>Hold the empire.</strong> Survive to a set round while keeping your starting territory. Results are often graded by how much you still hold.</li>
+    <li><strong>Take and keep.</strong> Capture an enemy capital and still hold it at the end of a set number of rounds <em>in a row</em>. If you lose it at any point, the count resets to zero.</li>
+    <li><strong>Last power standing.</strong> In any game with rivals, a player who outlasts every other player wins.</li>
+  </ul>
+
+  <h3><span class="num">15.2</span>Elimination</h3>
+  <p>A power is destroyed when it owns no territory <strong>and</strong> has no units anywhere on the board. An army still in the field, or at sea, keeps its power alive. A destroyed power's turns are skipped for the rest of the game.</p>
+</section>
+
+<!-- 16 -->
+<section id="s16" class="major">
+  <h2><span class="num">16</span>Quick Reference</h2>
+  <div class="qr">
+    <div class="box">
+      <h4>Your turn</h4>
+      <ul>
+        <li>Collect income: 1 per territory, 2 per capital</li>
+        <li>Movement: move, declare attacks, take back freely</li>
+        <li>Combat: fight in declared order</li>
+        <li>Placement: non-combat moves, then buy</li>
+      </ul>
+      <h4>End of round</h4>
+      <ul>
+        <li>Event → spawns → invasions</li>
+        <li>Check victory</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Battle lines</h4>
+      <table>
+        <tbody>
+          <tr><td>Infantry</td><td class="n">5</td></tr>
+          <tr><td>Cavalry</td><td class="n">1</td></tr>
+          <tr><td>General</td><td class="n">1</td></tr>
+          <tr><td>Flank (attacker)</td><td class="n">+1 inf, +1 cav</td></tr>
+          <tr><td>Flank (defender)</td><td class="n">+1 spare cav</td></tr>
+          <tr><td>Either side's General</td><td class="n">main or flank post</td></tr>
+          <tr><td>Horse Archer (Parthia, max 2)</td><td class="n">1 main, 1 flank · not when assaulting a stronghold</td></tr>
+          <tr><td>Stronghold assault</td><td class="n">attacker inf 4 (never full), no flanks</td></tr>
+          <tr><td>Naval line</td><td class="n">4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box">
+      <h4>Hits</h4>
+      <ul>
+        <li>Roll the target or lower on a d12</li>
+        <li>Straight ahead → nearest in lane (lower slot on ties)</li>
+        <li>Empty enemy lane → spill to slot 1: Inf → Cav → Flank Inf → Flank Cav → Horse Archer → Flank Horse Archer</li>
+        <li>Generals are struck last; reserves are never struck</li>
+        <li>Marines die before their boat; cargo sinks with its ship</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Modifiers</h4>
+      <table>
+        <tbody>
+          <tr><td>Force march</td><td class="n minus">−1</td></tr>
+          <tr><td>Amphibious assault</td><td class="n minus">−1</td></tr>
+          <tr><td>Legion, line not full</td><td class="n plus">+1</td></tr>
+          <tr><td>Hoplite, line full (Attack and Defense)</td><td class="n plus">+1</td></tr>
+          <tr><td>Cavalry, Horse Archer or Elephant in their General's wing</td><td class="n plus">+1</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:14px;color:var(--muted);margin-top:8px">All modifiers are to Attack only, except Phalanx, which gives +1 to Attack and Defense.</p>
+    </div>
+    <div class="box wide">
+      <h4>Sieges</h4>
+      <ul>
+        <li>Garrison of 6+ land units (not Generals or engines) → breach roll first; fewer → assault at once</li>
+        <li>Breach on 4, then 6, 8, 10, automatic · Siege Engine <span class="plus">+2</span></li>
+        <li>Failed roll → raise siege marker; besiegers stay put and count as having fought</li>
+        <li>Failed roll of 12 → one random front-slot infantry unit takes a hit</li>
+        <li>Surrounded (besieger has 6+ land units adjacent): no income; at most 1 Levy per turn</li>
+        <li>Besieged by fewer than 6: breach rolls go on, no other effect</li>
+        <li>Garrison or relief army may attack the besiegers: a normal battle, no narrow line. Garrison survivors stay inside the walls.</li>
+        <li>Marker cleared if a turn passes with no attack, the garrison drops below 6, the assault fails, or the city changes hands</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Antiquity · Rules of Play · Playtest edition, September 2026. Scenario sheets are published separately.
+</footer>
+
+</main>
+</div>
+
+</body></html>
