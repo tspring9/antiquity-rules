@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Antiquity Battle Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+ --ground:#f1f3f0;--surface:#fbfcfa;--ink:#1b2226;--muted:#56625f;--rule:#cfd6d2;--accent:#1f6b62;--accent-soft:#dfece8;--red:#a8322d;--red-soft:#f5e3e1;--gold:#8a6614;--slot:#ffffff;--field:#e8ece7;
+ --display:"Marcellus SC","Trajan Pro",Georgia,serif;--body:"Alegreya Sans","Gill Sans","Segoe UI",sans-serif;--mono:"IBM Plex Mono",Consolas,monospace;
+ --s:72px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ground:#111618;--surface:#182023;--ink:#e4ebe8;--muted:#98a7a3;--rule:#2c3739;--accent:#62b8aa;--accent-soft:#1b3330;--red:#e27a72;--red-soft:#3a2220;--gold:#d9b45c;--slot:#1f292c;--field:#151c1e}}
+:root[data-theme="dark"]{color-scheme:dark;--ground:#111618;--surface:#182023;--ink:#e4ebe8;--muted:#98a7a3;--rule:#2c3739;--accent:#62b8aa;--accent-soft:#1b3330;--red:#e27a72;--red-soft:#3a2220;--gold:#d9b45c;--slot:#1f292c;--field:#151c1e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px;display:grid;gap:22px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.back{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:1px solid var(--rule);border-radius:999px;padding:7px 14px;background:var(--surface)}
+.back:hover{border-color:var(--ink)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.head h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,52px);letter-spacing:.05em;line-height:1;margin:6px 0 8px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
+.head p.lede{margin:0;max-width:70ch;color:var(--muted)}
+
+.scroll{overflow-x:auto;padding-bottom:4px}
+.board{
+ display:grid;
+ grid-template-columns:118px repeat(5,var(--s)) 14px var(--s) var(--s) 34px var(--s) var(--s) var(--s);
+ gap:8px;align-items:stretch;width:max-content;
+ background:var(--surface);border:1.5px solid var(--ink);border-radius:8px;padding:18px 20px;
+}
+.c-inf{grid-column:2/7}.c-cav{grid-column:8}.c-gen{grid-column:9}.c-main{grid-column:2/10}
+.c-finf{grid-column:11}.c-fcav{grid-column:12}.c-fgen{grid-column:13}.c-flank{grid-column:11/14}.c-fcg{grid-column:12/14}
+.c-lab{grid-column:1}.c-all{grid-column:1/-1}
+.wing{font-family:var(--display);font-size:17px;letter-spacing:.06em;text-align:center;border-bottom:1.5px solid var(--ink);padding-bottom:3px}
+.wing.flank{border-bottom-style:dashed}
+.lane{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;text-align:center;color:var(--muted);line-height:1.2;align-self:end}
+.lane b{display:block;color:var(--ink);font-weight:500}
+.side{display:flex;flex-direction:column;justify-content:center;gap:6px;padding-right:6px}
+.side h2{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.05em;margin:0;line-height:1}
+.side.att h2{color:var(--ink)}.side.def h2{color:var(--red)}
+.chk{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);line-height:1.15}
+.chk i{flex:none;width:13px;height:13px;border:1.3px solid currentColor;border-radius:2px}
+.row-lab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center}
+.slot{height:var(--s);border:2px solid var(--ink);border-radius:6px;background:var(--slot);position:relative;display:flex;align-items:flex-start;justify-content:flex-start;padding:4px 6px}
+.slot .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.slot .t{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.slot.def{border-color:var(--red)}
+.slot.flank{border-style:dashed}
+.slot.none{border:1.5px dotted var(--rule);background:transparent;align-items:center;justify-content:center;text-align:center;font-size:11px;color:var(--muted);line-height:1.2;padding:4px}
+.res{min-height:calc(var(--s)*.9);border:1.5px dashed var(--rule);border-radius:6px;background:var(--field);padding:6px 8px;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.res.engine{border-style:solid;border-color:var(--rule);background:transparent}
+.note{border:0;background:transparent;display:flex;align-items:center;justify-content:center;text-align:center;text-transform:none;letter-spacing:0;font-family:var(--body);font-size:12.5px;line-height:1.25}
+.clash{display:flex;align-items:center;justify-content:center;height:30px;position:relative}
+.clash::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1.5px solid var(--ink)}
+.clash span{position:relative;background:var(--surface);padding:0 4px;font-size:15px;color:var(--muted);line-height:1}
+.clash.flank::before{border-top-style:dashed}
+.clash-lab{font-family:var(--display);font-size:13px;letter-spacing:.14em;color:var(--muted);display:flex;align-items:center}
+
+.ref{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ref .box{border:1px solid var(--rule);border-radius:6px;background:var(--surface);padding:12px 16px;font-size:14.5px}
+.ref h3{font-family:var(--display);font-weight:400;font-size:17px;margin:0 0 6px;letter-spacing:.03em}
+.ref ul{margin:0;padding-left:18px}.ref li{margin-bottom:3px}
+.ref li::marker{color:var(--accent)}
+.ref table{border-collapse:collapse;width:100%}
+.ref td{padding:2px 0;border-bottom:1px solid var(--rule)}
+.ref td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.plus{color:var(--accent);font-family:var(--mono)}.minus{color:var(--red);font-family:var(--mono)}
+.key{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13.5px;color:var(--muted)}
+.key span{display:inline-flex;align-items:center;gap:7px}
+.key i{display:inline-block;width:22px;height:14px;border:2px solid var(--ink);border-radius:3px}
+.key i.def{border-color:var(--red)}.key i.flank{border-style:dashed}.key i.rs{border:1.5px dashed var(--rule);background:var(--field)}
+@media (max-width:760px){.ref{grid-template-columns:1fr}.wrap{padding-inline:16px}}
+@media print{
+ @page{size:letter landscape;margin:8mm}
+ :root{--ground:#fff;--surface:#fff;--ink:#000;--muted:#444;--rule:#999;--red:#a8322d;--slot:#fff;--field:#f3f3f3;--s:0.74in}
+ .bar,.head p.lede{display:none}
+ .wrap{padding:0;gap:8px;max-width:none}
+ .head h1{font-size:26px;margin:0}
+ .board{padding:10px 12px;gap:6px;grid-template-columns:1.15in repeat(5,var(--s)) 8px var(--s) var(--s) 22px var(--s) var(--s) var(--s)}
+ .scroll{overflow:visible}
+ .ref{gap:8px}.ref .box{padding:8px 12px;font-size:11.5px}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style></head><body>
+<div class="wrap">
+<nav class="bar" aria-label="Antiquity"><a class="back" href="index.html">&larr; Rules of Play</a>
+ <div class="key"><span><i></i>Attacker slot</span><span><i class="def"></i>Defender slot</span><span><i class="flank"></i>Flank post</span><span><i class="rs"></i>Reserve</span></div>
+</nav>
+<header class="head">
+ <p class="eyebrow">Antiquity · Rules §9–10</p>
+ <h1>Battle Board</h1>
+ <p class="lede">Put units on the front slots; everyone else waits in the reserve behind their lane. Each slot faces the slot across from it. Flank posts are used only when the attacker strikes from two or more territories.</p>
+</header>
+
+<div class="scroll">
+<div class="board" role="img" aria-label="Battle board. Main wing: infantry 5 slots, cavalry 1, general 1 for each side. Flank wing: attacker has flank infantry, flank cavalry and flank general; defender has flank cavalry and flank general only.">
+
+ <!-- wing headers -->
+ <div class="c-lab"></div>
+ <div class="wing c-main">Main wing</div>
+ <div class="wing flank c-flank">Flank wing</div>
+
+ <!-- lane headers -->
+ <div class="c-lab"></div>
+ <div class="lane c-inf"><b>Infantry</b>5 wide</div>
+ <div class="lane c-cav"><b>Cavalry</b>1</div>
+ <div class="lane c-gen"><b>General</b>1</div>
+ <div class="lane c-finf"><b>Flank Inf.</b>attacker</div>
+ <div class="lane c-fcav"><b>Flank Cav.</b>1</div>
+ <div class="lane c-fgen"><b>Flank Gen.</b>1</div>
+
+ <!-- attacker reserve -->
+ <div class="row-lab c-lab">Attacker reserve</div>
+ <div class="res c-inf">Infantry reserve</div>
+ <div class="res c-cav">Cavalry reserve</div>
+ <div class="res engine c-gen">Siege engines</div>
+ <div class="res note c-flank">Extra detachment units join the main lanes</div>
+
+ <!-- attacker front -->
+ <div class="side att c-lab">
+  <h2>Attacker</h2>
+  <span class="chk"><i></i>Line full (5/5)</span>
+  <span class="chk"><i></i>General posted</span>
+ </div>
+ <div class="slot c-inf" style="grid-column:2"><span class="n">1</span></div>
+ <div class="slot" style="grid-column:3"><span class="n">2</span></div>
+ <div class="slot" style="grid-column:4"><span class="n">3</span></div>
+ <div class="slot" style="grid-column:5"><span class="n">4</span></div>
+ <div class="slot" style="grid-column:6"><span class="n">5</span></div>
+ <div class="slot c-cav"><span class="t">Cav</span></div>
+ <div class="slot c-gen"><span class="t">Gen</span></div>
+ <div class="slot flank c-finf"><span class="t">Inf</span></div>
+ <div class="slot flank c-fcav"><span class="t">Cav</span></div>
+ <div class="slot flank c-fgen"><span class="t">Gen</span></div>
+
+ <!-- clash line -->
+ <div class="clash-lab c-lab">The line</div>
+ <div class="clash" style="grid-column:2"><span>&#8597;</span></div>
+ <div class="clash" style="grid-column:3"><span>&#8597;</span></div>
+ <div class="clash" style="grid-column:4"><span>&#8597;</span></div>
+ <div class="clash" style="grid-column:5"><span>&#8597;</span></div>
+ <div class="clash" style="grid-column:6"><span>&#8597;</span></div>
+ <div class="clash c-cav"><span>&#8597;</span></div>
+ <div class="clash c-gen"><span>&#8597;</span></div>
+ <div class="clash flank c-finf"><span>&#8595;</span></div>
+ <div class="clash flank c-fcav"><span>&#8597;</span></div>
+ <div class="clash flank c-fgen"><span>&#8597;</span></div>
+
+ <!-- defender front -->
+ <div class="side def c-lab">
+  <h2>Defender</h2>
+  <span class="chk"><i></i>Line full (5/5)</span>
+  <span class="chk"><i></i>General posted</span>
+ </div>
+ <div class="slot def" style="grid-column:2"><span class="n">1</span></div>
+ <div class="slot def" style="grid-column:3"><span class="n">2</span></div>
+ <div class="slot def" style="grid-column:4"><span class="n">3</span></div>
+ <div class="slot def" style="grid-column:5"><span class="n">4</span></div>
+ <div class="slot def" style="grid-column:6"><span class="n">5</span></div>
+ <div class="slot def c-cav"><span class="t">Cav</span></div>
+ <div class="slot def c-gen"><span class="t">Gen</span></div>
+ <div class="slot none c-finf">No post</div>
+ <div class="slot def flank c-fcav"><span class="t">Spare cav</span></div>
+ <div class="slot def flank c-fgen"><span class="t">Gen</span></div>
+
+ <!-- defender reserve -->
+ <div class="row-lab c-lab">Defender reserve</div>
+ <div class="res c-inf">Infantry reserve</div>
+ <div class="res c-cav">Cavalry reserve</div>
+ <div class="res engine c-gen">Siege engines</div>
+ <div class="res note c-flank">Flank Cavalry must be a spare, never the front-line horseman</div>
+</div>
+</div>
+
+<section class="ref" aria-label="Quick reference">
+ <div class="box">
+  <h3>Each round</h3>
+  <ul>
+   <li>Check: line full? General posted?</li>
+   <li>Roll a d12 per front slot. Target or lower hits.</li>
+   <li>Hits go straight ahead, then roll down the lane.</li>
+   <li>Remove losses, refill from reserve.</li>
+   <li>Attacker may retreat.</li>
+  </ul>
+ </div>
+ <div class="box">
+  <h3>Where hits spill</h3>
+  <ul>
+   <li>Empty lane at round start: Infantry → Cavalry → Flank Inf. → Flank Cav.</li>
+   <li>Reserves are never hit.</li>
+   <li>Generals are struck last, when nothing else stands.</li>
+   <li>Attacker's Flank Infantry is reached only by spillover.</li>
+  </ul>
+ </div>
+ <div class="box">
+  <h3>Modifiers</h3>
+  <table>
+   <tr><td>Manipular · Legion, line not full</td><td class="n plus">+1</td></tr>
+   <tr><td>Phalanx · Hoplite, line full (Att &amp; Def)</td><td class="n plus">+1</td></tr>
+   <tr><td>Command · Cav in General's wing</td><td class="n plus">+1</td></tr>
+   <tr><td>Force march</td><td class="n minus">−1</td></tr>
+   <tr><td>Amphibious assault</td><td class="n minus">−1</td></tr>
+  </table>
+ </div>
+</section>
+</div>
+</body></html>
